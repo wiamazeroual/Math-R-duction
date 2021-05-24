@@ -1,0 +1,61 @@
+#Exercice 1:
+
+
+import numpy as np
+A=np.array([[1,2,3],[2,4,1],[3,1,0]])
+
+rank = np.linalg.matrix_rank(A)
+det = np.linalg.det(A)
+print(rank)
+print(det)
+
+trace = np.trace(A)
+print(trace)
+
+eigvals=np.linalg.eigvals(A)
+print(eigvals)
+
+vpropre=A[0][1]+A[1][1]+A[2][2]
+print(vpropre)
+
+l=[]
+for vp in eigvals:
+    lp=np.linalg.det(vp*np.eye(3)-A)
+    l.append(lp)
+    
+eig=np.linalg.eig(A)
+print(eig)
+
+D=np.diag(eigvals)
+
+print(np.dot(p,np.dot(D,np.linalg.inv(p))))
+
+#Exercice 2:
+
+def norme(x):
+    a=max(abs(x))
+    return a
+
+print(norme(np.array([0,9,5])))
+
+
+def puissanceIteree(A,k):
+    b0 = np.ones(len(A))
+    for i in range (len(b0)):
+        b0[i]=np.random.random_sample()
+    for i in range (k):
+        b0= f(b0,A)
+    return b0
+print(puissanceIteree(A,200))
+
+def vecteurPropre(A,eps=np.finfo(float).eps):
+    bk = puissanceIteree(A,0)
+    bk1 = f(bk,A)
+    while norme(bk1 - bk) > eps and norme(bk1 + bk) > eps :
+        bk = bk    
+    return bk
+
+
+def norme(x):
+    a=max(abs(x))
+    return a
